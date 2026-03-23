@@ -25,6 +25,9 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+             enablement: true
+             token: ${{ secrets.PAGES_PAT }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
