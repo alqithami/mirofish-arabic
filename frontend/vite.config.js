@@ -1,8 +1,10 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// https://vite.dev/config/
+const isGitHubPages = process.env.GITHUB_ACTIONS === 'true'
+
 export default defineConfig({
+  base: isGitHubPages ? '/mirofish-arabic/' : '/',
   plugins: [vue()],
   server: {
     port: 3000,
