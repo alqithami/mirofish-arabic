@@ -1,0 +1,24 @@
+{
+  "name": "mirofish",
+  "version": "0.1.0",
+  "description": "MiroFish Arabic Edition - an Arabic-first swarm intelligence engine for predictive simulation",
+  "scripts": {
+    "setup": "npm ci && npm ci --prefix frontend",
+    "setup:backend": "cd backend && uv sync --python 3.12",
+    "setup:all": "npm run setup && npm run setup:backend",
+    "dev": "concurrently --kill-others -n \"backend,frontend\" -c \"green,cyan\" \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && uv run --python 3.12 python run.py",
+    "frontend": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "test:backend": "cd backend && uv run --python 3.12 python -m unittest discover -s tests -v",
+    "smoke:backend": "cd backend && uv run --python 3.12 python tests/test_app_smoke.py",
+    "package:release": "python3 tools/package_release.py --output release/mirofish-arabic-release.zip"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "AGPL-3.0"
+}
